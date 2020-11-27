@@ -2,17 +2,25 @@ package com.donga.caloriemaster_android;
 
 public class cooking {
 
+    String picture;
     String name;
-    String nutritionFacts;
-    String ingredients;
+    String kcal;
 
-    public cooking(String name, String nutritionFacts, String ingredients) {
+    public cooking(String picture, String name, String kcal) {
+
+        this.picture=picture;
         this.name = name;
-        this.nutritionFacts = nutritionFacts;
-        this.ingredients = ingredients;
+        this.kcal=kcal;
+
     }
 
-    public cooking(){}
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
     public String getName() {
         return name;
@@ -22,20 +30,12 @@ public class cooking {
         this.name = name;
     }
 
-    public String getNutritionFacts() {
-        return nutritionFacts;
+    public String getKcal() {
+        return kcal;
     }
 
-    public void setNutritionFacts(String nutritionFacts) {
-        this.nutritionFacts = nutritionFacts;
-    }
-
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
+    public void setKcal(String kcal) {
+        this.kcal = kcal;
     }
 }
 
