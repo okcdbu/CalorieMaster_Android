@@ -6,9 +6,18 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+
+    ActivityMainBinding binding;
+    MainViewModel viewModel;
+
+
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        binding.setViewModel(viewModel); binding.setLifecycleOwner(this); }
+
+
 }
