@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "93403852078",
+    "firebase_url": "https://caloriemaster-android.firebaseio.com",
+    "project_id": "caloriemaster-android",
+    "storage_bucket": "caloriemaster-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93403852078:android:d65ead7e6a551eee559ebf",
+        "android_client_info": {
+          "package_name": "com.donga.caloriemaster_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93403852078-h5cvbhlghjotu3h792427i86nmvpng3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFlZYYNWjzPOJTEHMUAHiNg5qetTJwDEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93403852078-h5cvbhlghjotu3h792427i86nmvpng3e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
