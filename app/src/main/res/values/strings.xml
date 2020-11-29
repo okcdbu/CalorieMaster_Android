@@ -11,4 +11,6 @@
     <string name="email_signup">Sign up with email</string>
     <string name="signin">Sign in</string>
     <string name="give_info">Create your own account for Calorie Master!</string>
+    <string name="signout">Sign Out</string>
+    <string name="profile">Profile Fragment!</string>
 </resources>
