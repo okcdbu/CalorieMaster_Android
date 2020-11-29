@@ -15,26 +15,38 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.action_recipe: getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Recipefragment).commit();
+                case R.id.action_recipe: loadFragment(Recipefragment);
                 return true;
-                case R.id.action_home: getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Homefragment).commit();
+                case R.id.action_home: loadFragment(Homefragment);
                 return true;
-                case R.id.action_profile: getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Profilefragment).commit();
+                case R.id.action_profile: loadFragment(Profilefragment);
                 return true;
             }
             return false;
         }
     };
+    public boolean loadFragment(Fragment fragment) {
+        //switching fragment
 
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        Recipefragment = new RecipeFragment();
-        Homefragment = new HomeFragment();
-        Profilefragment = new LoginFragment();
+        Recipefragment = RecipeFragment.newInstance();
+        Homefragment = HomeFragment.newInstance();
+        Profilefragment = LoginFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Homefragment).commit();
+        bottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
     }
 }

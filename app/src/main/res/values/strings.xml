@@ -6,5 +6,9 @@
     <string name="menu_profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="enterid">Enter an e-mail address or username</string>
+    <string name="password">Password</string>
+    <string name="email_signup">Sign up with email</string>
+    <string name="signin">Sign in</string>
+    <string name="give_info">Create your own account for Calorie Master!</string>
 </resources>
