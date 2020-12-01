@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "577752145516",
+    "firebase_url": "https://caloriemasterandroid.firebaseio.com",
+    "project_id": "caloriemasterandroid",
+    "storage_bucket": "caloriemasterandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577752145516:android:2f4ecd11a61cd24e010249",
+        "android_client_info": {
+          "package_name": "com.donga.caloriemaster_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577752145516-nn8jqj5mok82ncuhv6nu1r3pfbomcmvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.donga.caloriemaster_android",
+            "certificate_hash": "9e8ddc529a42834885b1febfdc4a2df48089bb2e"
+          }
+        },
+        {
+          "client_id": "577752145516-49s8b7jk0rcrr0b5dqu5j136v9hsdtrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyButcwtMcJnebgJYVINRjYmdo1PQsTYII8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577752145516-49s8b7jk0rcrr0b5dqu5j136v9hsdtrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

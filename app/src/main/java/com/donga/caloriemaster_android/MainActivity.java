@@ -46,10 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 //실제적으로 파이어베이스 데이터베이스의 데이터를 받아오는 곳
 
                 arrayList.clear(); //기존 배열리스트가 존재하지않도록 초기화
+
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                     //반복문으로 데이터 List를 추출해냄
-                    cooking cooking=snapshot.getValue(cooking.class);//만들어뒀던 User 객체에 데이터를 담음
-                    arrayList.add(cooking);//담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
+                    cooking cooking_=snapshot.getValue(cooking.class);//만들어뒀던 cooking 객체에 데이터를 담음
+                    arrayList.add(cooking_);//담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
 
                 }
 
