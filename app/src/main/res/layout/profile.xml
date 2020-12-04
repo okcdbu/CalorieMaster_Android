@@ -13,56 +13,87 @@
         android:layout_marginLeft="15dp"
         android:background="@drawable/backbutton"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_launcher_background"
-        app:civ_border_color="#000000"
-        app:civ_border_width="30dp"
+        android:src="@drawable/profileex"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
-        />
+        android:layout_margin="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="269dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:gravity="right"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이름" />
+            android:layout_marginTop="10dp"
+            android:text="김이름" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이메일" />
+            android:layout_marginTop="25dp"
+            android:text="shala123@naver.com" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
 
             <RadioButton
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여자"/>
 
             <RadioButton
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남자"/>
+
         </RadioGroup>
 
-        </LinearLayout>
-        <EditText
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="나이" />
+            android:layout_marginTop="15dp">
 
+            <EditText
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sqr2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세"/>
+
+        </LinearLayout>
+
+        <Spinner
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="200dp"
+            android:spinnerMode="dropdown">
+
+        </Spinner>
 
     </LinearLayout>
-
 
 </LinearLayout>
