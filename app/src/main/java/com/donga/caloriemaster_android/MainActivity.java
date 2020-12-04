@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Recipefragment = RecipeFragment.newInstance();
         Homefragment = HomeFragment.newInstance();
         Profilefragment = LoginFragment.newInstance();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,Homefragment).commit();
+        loadFragment(Homefragment);
         bottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
     }
 }
