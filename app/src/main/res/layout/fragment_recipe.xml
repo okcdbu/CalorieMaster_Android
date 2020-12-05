@@ -6,12 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".RecipeFragment">
-    <ImageView
-        android:id="@+id/iv_search"
-        android:layout_width="251dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/search" />
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,7 +28,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="13dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/mag" />
+            android:background="@drawable/mag"
+            android:id="@+id/search_btn"/>
 
 
     </RelativeLayout>
