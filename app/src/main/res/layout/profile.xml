@@ -13,17 +13,17 @@
         android:layout_marginLeft="15dp"
         android:background="@drawable/backbutton"/>
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:src="@drawable/profileex"
         android:layout_gravity="center"
         android:layout_margin="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="269dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="233dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:gravity="right"
         android:orientation="vertical">
@@ -43,27 +43,28 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여자"/>
+                android:text="여자" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="남자"/>
+                android:text="남자" />
 
         </RadioGroup>
 
@@ -73,27 +74,64 @@
             android:layout_marginTop="15dp">
 
             <EditText
+                android:id="@+id/edt_age"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/sqr2"/>
+                android:background="@drawable/sqr2"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sqr2"
+                android:textSize="20sp"
+                android:visibility="visible" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="세"/>
+                android:text="세" />
 
         </LinearLayout>
 
-        <Spinner
-            android:layout_marginTop="20dp"
+        <TextView
+            android:id="@+id/tv_job"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:dropDownWidth="200dp"
-            android:spinnerMode="dropdown">
+            android:layout_marginTop="20dp"
+            android:text="직업 선택" />
 
-        </Spinner>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:dropDownWidth="200dp"
+            android:entries="@array/직업"
+            android:spinnerMode="dropdown"
+            android:visibility="gone"></Spinner>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textSize="10sp"
+        android:text="수정"
+        android:layout_gravity="right"/>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textSize="10sp"
+        android:text="확인"
+        android:layout_gravity="right"
+        android:visibility="gone"/>
 
 </LinearLayout>
