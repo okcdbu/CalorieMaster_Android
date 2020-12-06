@@ -6,7 +6,6 @@ public class cooking {
     private String name;
     private int kcal;
 
-
     public cooking(){}
 
     public String getPicture() {
