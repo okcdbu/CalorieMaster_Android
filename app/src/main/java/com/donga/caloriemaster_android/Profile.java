@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,6 +18,9 @@ public class Profile extends AppCompatActivity {
     TextView tv_age,tv_job;
     Spinner spinner;
     Button btn_edit,btn_confirm;
+    ImageView iv_select1,iv_select2,iv_unselect1,iv_unselect2;
+    RadioButton btn_radio1,btn_radio2;
+    boolean checkGen=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,12 @@ public class Profile extends AppCompatActivity {
         spinner=(Spinner)findViewById(R.id.spinner);
         btn_edit=(Button)findViewById(R.id.btn_edit);
         btn_confirm=(Button)findViewById(R.id.btn_confirm);
+        iv_select1=(ImageView)findViewById(R.id.iv_select1);
+        iv_select2=(ImageView)findViewById(R.id.iv_select2);
+        iv_unselect1=(ImageView)findViewById(R.id.iv_unselect1);
+        iv_unselect2=(ImageView)findViewById(R.id.iv_unselect2);
+        btn_radio1=(RadioButton)findViewById(R.id.btn_radio1);
+        btn_radio2=(RadioButton)findViewById(R.id.btn_radio2);
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +52,14 @@ public class Profile extends AppCompatActivity {
 
                 btn_confirm.setVisibility(View.VISIBLE);
                 btn_edit.setVisibility(View.GONE);
+
+                btn_radio1.setVisibility(View.VISIBLE);
+                btn_radio2.setVisibility(View.VISIBLE);
+                iv_select1.setVisibility(View.GONE);
+                iv_select2.setVisibility(View.GONE);
+                iv_unselect1.setVisibility(View.GONE);
+                iv_unselect2.setVisibility(View.GONE);
+
             }
         });
 
@@ -57,6 +76,24 @@ public class Profile extends AppCompatActivity {
 
                 btn_confirm.setVisibility(View.GONE);
                 btn_edit.setVisibility(View.VISIBLE);
+
+                btn_radio1.setVisibility(View.GONE);
+                btn_radio2.setVisibility(View.GONE);
+
+                if(checkGen==false){
+                    iv_select1.setVisibility(View.VISIBLE);
+                    iv_select2.setVisibility(View.GONE);
+                    iv_unselect1.setVisibility(View.GONE);
+                    iv_unselect2.setVisibility(View.VISIBLE);
+
+                }
+                else{
+                    iv_select1.setVisibility(View.GONE);
+                    iv_select2.setVisibility(View.VISIBLE);
+                    iv_unselect1.setVisibility(View.VISIBLE);
+                    iv_unselect2.setVisibility(View.GONE);
+                }
+
             }
         });
 
@@ -72,5 +109,23 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void RtnClicked(View view){
+        boolean checked=((RadioButton)view).isChecked();
+        switch (view.getId()){
+            case R.id.btn_radio1:
+                if(checked){
+                    checkGen=false;
+                    break;
+                }
+            case R.id.btn_radio2:
+                if(checked){
+                    checkGen=true;
+                    break;
+                }
+
+        }
     }
 }
