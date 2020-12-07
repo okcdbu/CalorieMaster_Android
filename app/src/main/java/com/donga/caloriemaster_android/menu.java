@@ -58,8 +58,7 @@ public class menu extends AppCompatActivity {
         final EditText edittext = new EditText(this);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("AlertDialog Title");
-        builder.setMessage("AlertDialog Content");
+        builder.setTitle("식사량 입력(g)");
         builder.setView(edittext);
         builder.setPositiveButton("입력",
                 new DialogInterface.OnClickListener() {
@@ -89,7 +88,7 @@ public class menu extends AppCompatActivity {
         SelectedItems.add(defaultItem);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("time");
+        builder.setTitle("식사시간 선택");
         builder.setSingleChoiceItems(items, defaultItem,
                 new DialogInterface.OnClickListener() {
                     @Override
