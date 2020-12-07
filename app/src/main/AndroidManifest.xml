@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".menu"/>
+        <activity android:name=".home"/>
+        <activity android:name=".CookingRecyclerView"/>
     </application>
 
 </manifest>

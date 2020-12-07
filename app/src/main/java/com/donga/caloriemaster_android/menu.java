@@ -124,8 +124,9 @@ public class menu extends AppCompatActivity {
     }
 
     public void clickback(View view){
-        Intent intent = new Intent(this, CookingRecyclerView.class);
+        Intent intent = new Intent(getApplicationContext(), CookingRecyclerView.class);
         startActivity(intent);
     }
+
 
 }
