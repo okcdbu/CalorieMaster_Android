@@ -36,7 +36,7 @@ public class RecipeFragment extends Fragment {
     private ArrayList<cooking> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private Button search;
+    private Button search,add;
     private EditText searchtv;
     public RecipeFragment() { }
 
@@ -58,6 +58,7 @@ public class RecipeFragment extends Fragment {
         recyclerView= v.findViewById(R.id.RecyclerView);
         search = (Button)v.findViewById(R.id.search_btn);
         searchtv = (EditText)v.findViewById(R.id.tv_search);
+        add = (Button)v.findViewById(R.id.add_btn);
         recyclerView.setHasFixedSize(true);//리사이클러뷰 기존 성능 강화
         layoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -110,6 +111,12 @@ public class RecipeFragment extends Fragment {
                         Log.e("MainActivity",String.valueOf(databaseError.toException()));
                     }
                 });
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //((MainActivity)getActivity()).loadFragment(MenuAddFragment.newInstance());
             }
         });
         return v;
