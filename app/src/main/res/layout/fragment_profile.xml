@@ -6,15 +6,194 @@
     android:orientation="vertical"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="35sp"
+        android:layout_marginLeft="15sp"
+        android:background="@drawable/backbutton"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/profileex"
+        android:layout_gravity="center"
+        android:layout_margin="15sp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/profile"/>
+        android:layout_height="233dp"
+        android:layout_marginTop="35sp"
+        android:layout_marginRight="20sp"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김이름"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shala123@naver.com"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_select1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/select"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginRight="5sp"/>
+
+            <ImageView
+                android:id="@+id/iv_unselect1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/unselect"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                android:layout_marginRight="5sp"/>
+
+            <RadioButton
+                android:id="@+id/btn_radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:onClick="RtnClicked"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여자"
+                android:layout_gravity="center"
+                android:layout_marginRight="5sp"/>
+
+            <ImageView
+                android:id="@+id/iv_select2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/select"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                android:layout_marginRight="5sp"/>
+
+            <ImageView
+                android:id="@+id/iv_unselect2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/unselect"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginRight="5sp"/>
+
+            <RadioButton
+                android:id="@+id/btn_radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:onClick="RtnClicked"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="남자" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+
+            <EditText
+                android:id="@+id/edt_age"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/sqr2"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/sqr2"
+                android:textSize="20sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="직업 선택"
+                android:layout_gravity="center"
+                />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:dropDownWidth="200dp"
+                android:entries="@array/직업"
+                android:spinnerMode="dropdown"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                ></Spinner>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textSize="10sp"
+        android:text="수정"
+        android:layout_gravity="right"/>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textSize="10sp"
+        android:text="확인"
+        android:layout_gravity="right"
+        android:visibility="gone"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
