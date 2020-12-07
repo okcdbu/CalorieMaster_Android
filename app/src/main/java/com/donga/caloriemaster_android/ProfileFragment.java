@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ Button btnlogout;
     Button btn_edit,btn_confirm;
     ImageView iv_select1,iv_select2,iv_unselect1,iv_unselect2;
     RadioButton btn_radio1,btn_radio2;
+    RadioGroup radioGroup;
     boolean checkGen=false;
     public ProfileFragment() {
         // Required empty public constructor
@@ -63,7 +65,7 @@ Button btnlogout;
         iv_unselect2=(ImageView)v.findViewById(R.id.iv_unselect2);
         btn_radio1=(RadioButton)v.findViewById(R.id.btn_radio1);
         btn_radio2=(RadioButton)v.findViewById(R.id.btn_radio2);
-
+        radioGroup=(RadioGroup)v.findViewById(R.id.radio_grp);
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,8 +134,34 @@ Button btnlogout;
 
             }
         });
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                boolean checked=((RadioButton)radioGroup.findViewById(i)).isChecked();
+                switch (i){
+                    case R.id.btn_radio1:
+                        if(checked){
+                            checkGen=false;
+                            break;
+                        }
+                    case R.id.btn_radio2:
+                        if(checked){
+                            checkGen=true;
+                            break;
+                        }
 
+                }
+            }
+        });
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                ((MainActivity)getActivity()).loadFragment(LoginFragment.newInstance());
+            }
+        });
 
+        return v;
     }
 
     public void RtnClicked(View view){
@@ -152,14 +180,5 @@ Button btnlogout;
 
         }
     }
-        btnlogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                ((MainActivity)getActivity()).loadFragment(LoginFragment.newInstance());
-            }
-        });
 
-        return v;
     }
-}
