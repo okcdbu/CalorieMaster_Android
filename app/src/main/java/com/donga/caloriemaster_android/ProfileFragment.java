@@ -26,12 +26,13 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ProfileFragment extends Fragment {
 Button btnlogout;
     EditText edt_age;
-    TextView tv_age,tv_job;
+    TextView tv_age,tv_job,tv_name,tv_email;
     Spinner spinner;
     Button btn_edit,btn_confirm;
     ImageView iv_select1,iv_select2,iv_unselect1,iv_unselect2;
     RadioButton btn_radio1,btn_radio2;
     RadioGroup radioGroup;
+    FirebaseAuth mAuth;
     boolean checkGen=false;
     public ProfileFragment() {
         // Required empty public constructor
@@ -54,6 +55,8 @@ Button btnlogout;
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         btnlogout = v.findViewById(R.id.logout);
         edt_age=(EditText)v.findViewById(R.id.edt_age);
+        tv_name=(TextView)v.findViewById(R.id.tv_name);
+        tv_email=(TextView)v.findViewById(R.id.tv_email);
         tv_age=(TextView)v.findViewById(R.id.tv_age);
         tv_job=(TextView)v.findViewById(R.id.tv_job);
         spinner=(Spinner)v.findViewById(R.id.spinner);
@@ -66,6 +69,11 @@ Button btnlogout;
         btn_radio1=(RadioButton)v.findViewById(R.id.btn_radio1);
         btn_radio2=(RadioButton)v.findViewById(R.id.btn_radio2);
         radioGroup=(RadioGroup)v.findViewById(R.id.radio_grp);
+        mAuth = FirebaseAuth.getInstance();
+        String name = mAuth.getCurrentUser().getDisplayName();
+        tv_name.setText(name);
+        String email = mAuth.getCurrentUser().getEmail();
+        tv_email.setText(email);
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
