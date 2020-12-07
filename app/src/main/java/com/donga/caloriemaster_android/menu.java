@@ -29,7 +29,6 @@ public class menu extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
                 show_date();
                 show_time();
                 show_gram();
@@ -50,6 +49,7 @@ public class menu extends AppCompatActivity {
         };
 
         DatePickerDialog dialog = new DatePickerDialog(this, callbackMethod, 2019, 5, 24);
+
         dialog.show();
 
     }
@@ -120,6 +120,7 @@ public class menu extends AppCompatActivity {
                 });
 
         builder.show();
+
     }
 
     public void clickback(View view){
