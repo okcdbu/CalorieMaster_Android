@@ -31,13 +31,16 @@ import java.util.Queue;
  */
 public class RecipeFragment extends Fragment {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private cookingAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<cooking> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private Button search,add;
     private EditText searchtv;
+    private Bundle bundle;
+    private String name, picture;
+    private int kcal,protein,carb,fat;
     public RecipeFragment() { }
 
     public static RecipeFragment newInstance() {
@@ -85,7 +88,29 @@ public class RecipeFragment extends Fragment {
         });
 
         adapter=new cookingAdapter(arrayList,getContext());
+        adapter.setOnItemClickListener(new cookingAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                name = arrayList.get(position).getName();
+                picture = arrayList.get(position).getPicture();
+                kcal = arrayList.get(position).getKcal();
+                protein = arrayList.get(position).getProtein();
+                carb = arrayList.get(position).getCarb();
+                fat = arrayList.get(position).getFat();
+                bundle = new Bundle();
+                bundle.putString("name",name);
+                bundle.putString("picture",picture);
+                bundle.putInt("kcal",kcal);
+                bundle.putInt("protein",protein);
+                bundle.putInt("carb",carb);
+                bundle.putInt("fat",fat);
+                Fragment fragment = MenuFragment.newInstance();
+                fragment.setArguments(bundle);
+                ((MainActivity)getActivity()).loadFragment(fragment);
+            }
+        });
         recyclerView.setAdapter(adapter); //리사이클러뷰에 어댑터 연결
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

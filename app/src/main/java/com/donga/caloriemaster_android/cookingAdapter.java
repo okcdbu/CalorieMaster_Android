@@ -2,6 +2,7 @@ package com.donga.caloriemaster_android;
 
 import android.content.Context;
 import android.media.Image;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,14 @@ public class cookingAdapter extends RecyclerView.Adapter<cookingAdapter.ViewHold
         this.arrayList = arrayList;
         this.context = context;
     }
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
+    private OnItemClickListener mListener = null ;
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener ;
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -56,11 +64,24 @@ public class cookingAdapter extends RecyclerView.Adapter<cookingAdapter.ViewHold
         ImageView iv_picture;
         TextView tv_name,tv_kcal;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_picture=itemView.findViewById(R.id.iv_picture);
             tv_name=itemView.findViewById(R.id.tv_name);
             tv_kcal=itemView.findViewById(R.id.tv_kcal);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+
+                        if (mListener != null) {
+                            mListener.onItemClick(view, pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuFragment">
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ImageView
+           android:id="@+id/food_image"
+           android:layout_width="406dp"
+           android:layout_height="339dp"
+           android:layout_marginBottom="376dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.4"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.0"
+           app:srcCompat="@drawable/chicken"
+           tools:ignore="MissingConstraints"
+           tools:layout="@layout/fragment_menu" />
+
+       <ImageView
+           android:id="@+id/back"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.079"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.085"
+           app:srcCompat="@drawable/back"
+           tools:ignore="MissingConstraints" />
+
+       <TextView
+           android:id="@+id/tv_name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="치킨"
+           android:textColor="#ffffff"
+           android:textSize="27dp"
+           android:textStyle="bold"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.171"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.400"
+           tools:ignore="MissingConstraints" />
+
+       <TextView
+           android:id="@+id/tv_kcal"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="1000kcal"
+           android:textColor="#ffffff"
+           android:textSize="25dp"
+           android:textStyle="bold"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.843"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.400"
+           tools:ignore="MissingConstraints" />
+
+       <TextView
+           android:id="@+id/food_nutrient"
+           android:layout_width="350dp"
+           android:layout_height="70dp"
+           android:text="영양성분\n"
+           android:textSize="14dp"
+           android:inputType="textMultiLine"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.491"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.765"
+           tools:ignore="MissingConstraints" />
+
+       <TextView
+           android:id="@+id/Ingredients"
+           android:layout_width="350dp"
+           android:layout_height="70dp"
+           android:text="재료"
+           android:textSize="14dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.491"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.624"
+           tools:ignore="MissingConstraints" />
+
+       <TextView
+           android:id="@+id/food_recipe"
+           android:layout_width="350dp"
+           android:layout_height="70dp"
+           android:text="요리방법"
+           android:textSize="14dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.491"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.901"
+           tools:ignore="MissingConstraints" />
+
+       <ImageView
+           android:id="@+id/imageView_plus"
+           android:layout_width="70dp"
+           android:layout_height="52dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.991"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintVertical_bias="0.976"
+           app:srcCompat="@drawable/plus" />
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

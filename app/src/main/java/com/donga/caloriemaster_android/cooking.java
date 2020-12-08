@@ -5,7 +5,34 @@ public class cooking {
     private String picture;
     private String name;
     private int kcal;
+    private int carb;
+    private int protein;
+    private int fat;
 
+    public int getProtein() {
+        return protein;
+    }
+
+    public void setProtein(int protein) {
+        this.protein = protein;
+    }
+
+    public int getFat() {
+        return fat;
+    }
+
+    public void setFat(int fat) {
+        this.fat = fat;
+    }
+
+
+    public int getCarb() {
+        return carb;
+    }
+
+    public void setCarb(int carb) {
+        this.carb = carb;
+    }
 
     public cooking(){}
 

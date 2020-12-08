@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     Fragment Recipefragment,Homefragment,Profilefragment;
-
+    BottomNavigationView bottomNavigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commit();
+            if(fragment instanceof HomeFragment)
+                bottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
             return true;
         }
         return false;
@@ -41,12 +43,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         Recipefragment = RecipeFragment.newInstance();
         Homefragment = HomeFragment.newInstance();
         Profilefragment = LoginFragment.newInstance();
         loadFragment(Homefragment);
-        bottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
     }
 }
