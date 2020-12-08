@@ -234,7 +234,7 @@ public class HomeFragment extends Fragment {
     };
 
 
-    public class myDBHelper extends SQLiteOpenHelper {
+    public static class myDBHelper extends SQLiteOpenHelper {
 
         public myDBHelper(Context context){
             super(context,"dietGroup",null,1);
@@ -275,9 +275,16 @@ public class HomeFragment extends Fragment {
             int protein = cursor.getInt(cursor.getColumnIndex("bfprotein"));
             int fat = cursor.getInt(cursor.getColumnIndex("bffat"));
 
-            tv_diet1.setText(diet);
-            tv_kcal1.setText("칼로리 : " + kcal + "kcal");
-            tv_nute1.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+            if(diet.equals("None")){
+                tv_diet1.setText("식단이 없어요!");
+                tv_kcal1.setText("");
+                tv_nute1.setText("");
+            }
+            else {
+                tv_diet1.setText(diet);
+                tv_kcal1.setText("칼로리 : " + kcal + "kcal");
+                tv_nute1.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+            }
 
             diet = cursor.getString(cursor.getColumnIndex("lun"));
             kcal = cursor.getInt(cursor.getColumnIndex("lunkcal"));
@@ -285,19 +292,33 @@ public class HomeFragment extends Fragment {
             protein = cursor.getInt(cursor.getColumnIndex("lunprotein"));
             fat = cursor.getInt(cursor.getColumnIndex("lunfat"));
 
-            tv_diet2.setText(diet);
-            tv_kcal2.setText("칼로리 : " + kcal + "kcal");
-            tv_nute2.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
-
+            if(diet.equals("None")) {
+                tv_diet2.setText("식단이 없어요!");
+                tv_kcal2.setText("");
+                tv_nute2.setText("");
+            }
+            else {
+                tv_diet2.setText(diet);
+                tv_kcal2.setText("칼로리 : " + kcal + "kcal");
+                tv_nute2.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+            }
             diet = cursor.getString(cursor.getColumnIndex("di"));
             kcal=cursor.getInt(cursor.getColumnIndex("dikcal"));
             carbo = cursor.getInt(cursor.getColumnIndex("dicarbo"));
             protein = cursor.getInt(cursor.getColumnIndex("diprotein"));
             fat = cursor.getInt(cursor.getColumnIndex("difat"));
 
-            tv_diet3.setText(diet);
-            tv_kcal3.setText("칼로리 : " + kcal + "kcal");
-            tv_nute3.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+            if(diet.equals("None")) {
+                tv_diet3.setText("식단이 없어요!");
+                tv_kcal3.setText("");
+                tv_nute3.setText("");
+            }
+            else {
+                tv_diet3.setText(diet);
+                tv_kcal3.setText("칼로리 : " + kcal + "kcal");
+                tv_nute3.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+            }
+
         }
 
         else{
