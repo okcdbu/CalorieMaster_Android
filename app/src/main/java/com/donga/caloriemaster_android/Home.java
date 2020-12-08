@@ -1,17 +1,15 @@
 package com.donga.caloriemaster_android;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,14 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends Fragment {
+public class Home extends AppCompatActivity {
+
     static final int DATE_ID=0;
 
     public int y,mon,d;
@@ -45,70 +41,54 @@ public class HomeFragment extends Fragment {
     myDBHelper myHelper;
     SQLiteDatabase sqlDB;
 
-    public HomeFragment() {
+
+    public Home(){
+
         final Calendar c=Calendar.getInstance();
         mYear= c.get(Calendar.YEAR);
         mMonth=c.get(Calendar.MONTH);
         mDay=c.get(Calendar.DAY_OF_MONTH);
+
         y=mYear;
         mon=mMonth;
         d=mDay;
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
 
-    }
+        tv_date=(TextView)findViewById(R.id.tv_date);
+        tv_diet1=(TextView)findViewById(R.id.tv_diet1);
+        tv_diet2=(TextView)findViewById(R.id.tv_diet2);
+        tv_diet3=(TextView)findViewById(R.id.tv_diet3);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
-        tv_date=(TextView)v.findViewById(R.id.tv_date);
-        tv_diet1=(TextView)v.findViewById(R.id.tv_diet1);
-        tv_diet2=(TextView)v.findViewById(R.id.tv_diet2);
-        tv_diet3=(TextView)v.findViewById(R.id.tv_diet3);
+        tv_kcal1=(TextView)findViewById(R.id.tv_kcal1);
+        tv_kcal2=(TextView)findViewById(R.id.tv_kcal2);
+        tv_kcal3=(TextView)findViewById(R.id.tv_kcal3);
 
-        tv_kcal1=(TextView)v.findViewById(R.id.tv_kcal1);
-        tv_kcal2=(TextView)v.findViewById(R.id.tv_kcal2);
-        tv_kcal3=(TextView)v.findViewById(R.id.tv_kcal3);
+        tv_nute1=(TextView)findViewById(R.id.tv_nute1);
+        tv_nute2=(TextView)findViewById(R.id.tv_nute2);
+        tv_nute3=(TextView)findViewById(R.id.tv_nute3);
 
-        tv_nute1=(TextView)v.findViewById(R.id.tv_nute1);
-        tv_nute2=(TextView)v.findViewById(R.id.tv_nute2);
-        tv_nute3=(TextView)v.findViewById(R.id.tv_nute3);
+        layout_diet1=(LinearLayout)findViewById(R.id.layout_diet1);
+        layout_diet2=(LinearLayout)findViewById(R.id.layout_diet2);
+        layout_diet3=(LinearLayout)findViewById(R.id.layout_diet3);
 
-        layout_diet1=(LinearLayout)v.findViewById(R.id.layout_diet1);
-        layout_diet2=(LinearLayout)v.findViewById(R.id.layout_diet2);
-        layout_diet3=(LinearLayout)v.findViewById(R.id.layout_diet3);
+        btn_left=(Button)findViewById(R.id.btn_left);
+        btn_right=(Button)findViewById(R.id.btn_right);
 
-        btn_left=(Button)v.findViewById(R.id.btn_left);
-        btn_right=(Button)v.findViewById(R.id.btn_right);
+        spinner=(Spinner)findViewById(R.id.spinner);
+        myHelper=new myDBHelper(this);
 
-        spinner=(Spinner)v.findViewById(R.id.spinner);
-        myHelper=new myDBHelper(getContext());
+        btn1=(Button)findViewById(R.id.btn1);
+        tv1=(EditText)findViewById(R.id.tv1);
+        tv2=(EditText)findViewById(R.id.tv2);
+        tv3=(EditText)findViewById(R.id.tv3);
+        tv4=(EditText)findViewById(R.id.tv4);
+        tv5=(EditText)findViewById(R.id.tv5);
 
-        btn1=(Button)v.findViewById(R.id.btn1);
-        tv1=(EditText)v.findViewById(R.id.tv1);
-        tv2=(EditText)v.findViewById(R.id.tv2);
-        tv3=(EditText)v.findViewById(R.id.tv3);
-        tv4=(EditText)v.findViewById(R.id.tv4);
-        tv5=(EditText)v.findViewById(R.id.tv5);
-        tv_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatePickerDialog datepicker=new DatePickerDialog(getContext(),mDatesetListener,mYear,mMonth,mDay);
-                datepicker.show();
-            }
-        });
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -216,9 +196,14 @@ public class HomeFragment extends Fragment {
                 select(dbdate);
             }
         });
-        return v;
+
     }
 
+    public void datePick(View view){
+
+        DatePickerDialog datepicker=new DatePickerDialog(Home.this,mDatesetListener,mYear,mMonth,mDay);
+        datepicker.show();
+    }
 
     private DatePickerDialog.OnDateSetListener mDatesetListener=new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -234,7 +219,7 @@ public class HomeFragment extends Fragment {
     };
 
 
-    public class myDBHelper extends SQLiteOpenHelper {
+    public class myDBHelper extends SQLiteOpenHelper{
 
         public myDBHelper(Context context){
             super(context,"dietGroup",null,1);
