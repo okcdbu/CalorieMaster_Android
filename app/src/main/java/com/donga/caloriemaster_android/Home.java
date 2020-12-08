@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,6 +32,9 @@ public class Home extends AppCompatActivity {
     TextView tv_date,tv_diet1,tv_diet2,tv_diet3,tv_kcal1,tv_kcal2,tv_kcal3,tv_nute1,tv_nute2,tv_nute3;
     LinearLayout layout_diet1,layout_diet2,layout_diet3;
     Button btn_left,btn_right;
+
+    Button btn1;
+    EditText tv1,tv2,tv3,tv4,tv5;
 
     Spinner spinner;
 
@@ -78,6 +82,53 @@ public class Home extends AppCompatActivity {
         spinner=(Spinner)findViewById(R.id.spinner);
         myHelper=new myDBHelper(this);
 
+        btn1=(Button)findViewById(R.id.btn1);
+        tv1=(EditText)findViewById(R.id.tv1);
+        tv2=(EditText)findViewById(R.id.tv2);
+        tv3=(EditText)findViewById(R.id.tv3);
+        tv4=(EditText)findViewById(R.id.tv4);
+        tv5=(EditText)findViewById(R.id.tv5);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sqlDB=myHelper.getWritableDatabase();
+
+                Calendar day = Calendar.getInstance();
+                day.set(y,mon,d);
+
+                y=day.get(Calendar.YEAR);
+                mon=day.get(Calendar.MONTH);
+                d=day.get(Calendar.DAY_OF_MONTH);
+
+                String dbdate=""+y+(mon+1)+d;
+
+                boolean nothing=false;
+
+                Cursor cursor = sqlDB.rawQuery("SELECT * FROM diet WHERE date='"+dbdate+"';", null);
+
+                if (cursor.moveToFirst()) nothing = true;
+
+                if (!nothing) {
+
+                    String a;
+                    int b, c, d, e;
+                    a = tv1.getText().toString();
+                    b = Integer.parseInt(tv2.getText().toString());
+                    c = Integer.parseInt(tv3.getText().toString());
+                    d = Integer.parseInt(tv4.getText().toString());
+                    e = Integer.parseInt(tv4.getText().toString());
+
+                    sqlDB.execSQL("INSERT INTO diet VALUES('" + dbdate + "','" + a + "'," + b + "," + c + "," + d + "," + e + ",'밥밥디라라',0,0,0,0,'두비두밥',0,0,0,0);");
+
+                    select(dbdate);
+
+                }
+                sqlDB.close();
+            }
+        });
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -121,24 +172,7 @@ public class Home extends AppCompatActivity {
                 tv_date.setText(y+"년 " +(mon+1)+"월 " +d+"일");
 
                 String dbdate=""+y+(mon+1)+d;
-
-                sqlDB=myHelper.getReadableDatabase();
-                Cursor cursor;
-                cursor=sqlDB.rawQuery("SELECT * FROM diet WHERE date='"+dbdate+"';",null);
-
-                tv_diet1.setText(cursor.getString(1));
-                tv_kcal1.setText("칼로리 : "+cursor.getInt(2)+"kcal");
-                tv_nute1.setText("탄수화물 : "+cursor.getInt(3)+"g\n단백질 : "+cursor.getInt(4)+"g\n지방 : "+cursor.getInt(5)+"g");
-
-                tv_diet2.setText(cursor.getString(6));
-                tv_kcal2.setText("칼로리 : "+cursor.getInt(7)+"kcal");
-                tv_nute2.setText("탄수화물 : "+cursor.getInt(8)+"g\n단백질 : "+cursor.getInt(9)+"g\n지방 : "+cursor.getInt(10)+"g");
-
-                tv_diet3.setText(cursor.getString(11));
-                tv_kcal3.setText("칼로리 : "+cursor.getInt(12)+"kcal");
-                tv_nute3.setText("탄수화물 : "+cursor.getInt(13)+"g\n단백질 : "+cursor.getInt(14)+"g\n지방 : "+cursor.getInt(15)+"g");
-
-                sqlDB.close();
+                select(dbdate);
             }
         });
 
@@ -159,24 +193,7 @@ public class Home extends AppCompatActivity {
                 tv_date.setText(y+"년 " +(mon+1)+"월 " +d+"일");
 
                 String dbdate=""+y+(mon+1)+d;
-
-                sqlDB=myHelper.getReadableDatabase();
-                Cursor cursor;
-                cursor=sqlDB.rawQuery("SELECT * FROM diet WHERE date='"+dbdate+"';",null);
-
-                tv_diet1.setText(cursor.getString(1));
-                tv_kcal1.setText("칼로리 : "+cursor.getInt(2)+"kcal");
-                tv_nute1.setText("탄수화물 : "+cursor.getInt(3)+"g\n단백질 : "+cursor.getInt(4)+"g\n지방 : "+cursor.getInt(5)+"g");
-
-                tv_diet2.setText(cursor.getString(6));
-                tv_kcal2.setText("칼로리 : "+cursor.getInt(7)+"kcal");
-                tv_nute2.setText("탄수화물 : "+cursor.getInt(8)+"g\n단백질 : "+cursor.getInt(9)+"g\n지방 : "+cursor.getInt(10)+"g");
-
-                tv_diet3.setText(cursor.getString(11));
-                tv_kcal3.setText("칼로리 : "+cursor.getInt(12)+"kcal");
-                tv_nute3.setText("탄수화물 : "+cursor.getInt(13)+"g\n단백질 : "+cursor.getInt(14)+"g\n지방 : "+cursor.getInt(15)+"g");
-
-                sqlDB.close();
+                select(dbdate);
             }
         });
 
@@ -197,39 +214,25 @@ public class Home extends AppCompatActivity {
             tv_date.setText(y+"년 " +(mon+1)+"월 " +d+"일");
 
             String dbdate=""+y+(mon+1)+d;
-
-            sqlDB=myHelper.getReadableDatabase();
-            Cursor cursor;
-            cursor=sqlDB.rawQuery("SELECT * FROM diet WHERE date='"+dbdate+"';",null);
-
-            tv_diet1.setText(cursor.getString(1));
-            tv_kcal1.setText("칼로리 : "+cursor.getInt(2)+"kcal");
-            tv_nute1.setText("탄수화물 : "+cursor.getInt(3)+"g\n단백질 : "+cursor.getInt(4)+"g\n지방 : "+cursor.getInt(5)+"g");
-
-            tv_diet2.setText(cursor.getString(6));
-            tv_kcal2.setText("칼로리 : "+cursor.getInt(7)+"kcal");
-            tv_nute2.setText("탄수화물 : "+cursor.getInt(8)+"g\n단백질 : "+cursor.getInt(9)+"g\n지방 : "+cursor.getInt(10)+"g");
-
-            tv_diet3.setText(cursor.getString(11));
-            tv_kcal3.setText("칼로리 : "+cursor.getInt(12)+"kcal");
-            tv_nute3.setText("탄수화물 : "+cursor.getInt(13)+"g\n단백질 : "+cursor.getInt(14)+"g\n지방 : "+cursor.getInt(15)+"g");
-
-            sqlDB.close();
+            select(dbdate);
         }
     };
 
 
     public class myDBHelper extends SQLiteOpenHelper{
+
         public myDBHelper(Context context){
-            super(context,"dietgroup",null,1);
+            super(context,"dietGroup",null,1);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
 
+            db.execSQL("DROP TABLE IF EXISTS diet");
+
             db.execSQL("CREATE TABLE diet (date TEXT PRIMARY KEY,bf TEXT,bfkcal INTEGER,bfcarbo INTEGER,bfprotein INTEGER,bffat INTEGER," +
                     "lun TEXT,lunkcal INTEGER,luncarbo INTEGER,lunprotein INTEGER,lunfat INTEGER," +
-                    "di TEXT,dikacl INTEGER,dicarbo INTEGER,diprotein INTEGER,difat INTEGER)");
+                    "di TEXT,dikcal INTEGER,dicarbo INTEGER,diprotein INTEGER,difat INTEGER)");
 
         }
 
@@ -238,5 +241,58 @@ public class Home extends AppCompatActivity {
             db.execSQL("DROP TABLE IF EXISTS diet");
             onCreate(db);
         }
+    }
+
+    public void select(String dbdate){
+
+        sqlDB=myHelper.getReadableDatabase();
+        Cursor cursor;
+
+        cursor=sqlDB.rawQuery("SELECT * FROM diet WHERE date='"+dbdate+"';",null);
+
+        if(cursor.moveToFirst()) {
+
+            cursor.moveToFirst();
+
+            String diet = cursor.getString(cursor.getColumnIndex("bf"));
+            int kcal = cursor.getInt(cursor.getColumnIndex("bfkcal"));
+            int carbo = cursor.getInt(cursor.getColumnIndex("bfcarbo"));
+            int protein = cursor.getInt(cursor.getColumnIndex("bfprotein"));
+            int fat = cursor.getInt(cursor.getColumnIndex("bffat"));
+
+            tv_diet1.setText(diet);
+            tv_kcal1.setText("칼로리 : " + kcal + "kcal");
+            tv_nute1.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+
+            diet = cursor.getString(cursor.getColumnIndex("lun"));
+            kcal = cursor.getInt(cursor.getColumnIndex("lunkcal"));
+            carbo = cursor.getInt(cursor.getColumnIndex("luncarbo"));
+            protein = cursor.getInt(cursor.getColumnIndex("lunprotein"));
+            fat = cursor.getInt(cursor.getColumnIndex("lunfat"));
+
+            tv_diet2.setText(diet);
+            tv_kcal2.setText("칼로리 : " + kcal + "kcal");
+            tv_nute2.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+
+            diet = cursor.getString(cursor.getColumnIndex("di"));
+            kcal=cursor.getInt(cursor.getColumnIndex("dikcal"));
+            carbo = cursor.getInt(cursor.getColumnIndex("dicarbo"));
+            protein = cursor.getInt(cursor.getColumnIndex("diprotein"));
+            fat = cursor.getInt(cursor.getColumnIndex("difat"));
+
+            tv_diet3.setText(diet);
+            tv_kcal3.setText("칼로리 : " + kcal + "kcal");
+            tv_nute3.setText("탄수화물 : " + carbo + "g\n단백질 : " + protein + "g\n지방 : " + fat + "g");
+        }
+
+        else{
+            tv_diet1.setText("식단이 없어요!");
+            tv_kcal1.setText("");
+            tv_nute1.setText("");
+            tv_diet2.setText("식단이 없어요!");
+            tv_diet3.setText("식단이 없어요!");
+        }
+        sqlDB.close();
+
     }
 }
