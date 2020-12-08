@@ -290,7 +290,11 @@ public class Home extends AppCompatActivity {
             tv_kcal1.setText("");
             tv_nute1.setText("");
             tv_diet2.setText("식단이 없어요!");
+            tv_kcal2.setText("");
+            tv_nute2.setText("");
             tv_diet3.setText("식단이 없어요!");
+            tv_kcal3.setText("");
+            tv_nute3.setText("");
         }
         sqlDB.close();
 
