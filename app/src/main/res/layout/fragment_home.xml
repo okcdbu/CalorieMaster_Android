@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/home"
     android:orientation="vertical"
-    tools:context=".Home">
+    tools:context=".HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180sp"
+        android:layout_marginTop="150sp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -77,6 +77,7 @@
                         android:id="@+id/tv_diet1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
                         android:text="오늘의 조식" />
 
                     <TextView
@@ -160,47 +161,6 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="15sp"
                 android:background="@drawable/rightbtn" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="메뉴"/>
-            <EditText
-                android:id="@+id/tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="칼로리"
-                android:inputType="number"/>
-            <EditText
-                android:id="@+id/tv3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="탄"
-                android:inputType="number"/>
-            <EditText
-                android:id="@+id/tv4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="단"
-                android:inputType="number"/>
-            <EditText
-                android:id="@+id/tv5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="지"
-                android:inputType="number"/>
-            <Button
-                android:id="@+id/btn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

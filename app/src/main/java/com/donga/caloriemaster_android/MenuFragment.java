@@ -206,15 +206,15 @@ public class MenuFragment extends Fragment {
             sqlDB=myHelper.getWritableDatabase();
 
             if(checkEatTime==0){//조식
-                Toast.makeText(getContext(),"조식",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"조식",Toast.LENGTH_LONG).show();
                 sqlDB.execSQL("INSERT INTO diet VALUES('" + dbdate + "','" + dbname + "'," + dbkcal + "," + dbcarb + "," + dbprotein + "," + dbfat + ",'None',-1,-1,-1,-1,'None',-1,-1,-1,-1);");
             }
             else if(checkEatTime==1){//중식
-                Toast.makeText(getContext(),"중식",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"중식",Toast.LENGTH_LONG).show();
                 sqlDB.execSQL("INSERT INTO diet VALUES('" + dbdate + "','None',-1,-1,-1,-1,'"+dbname + "'," + dbkcal + "," + dbcarb + "," + dbprotein + "," + dbfat + ",'None',-1,-1,-1,-1 );");
             }
             else{//석식
-                Toast.makeText(getContext(),"석식",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"석식",Toast.LENGTH_LONG).show();
                 sqlDB.execSQL("INSERT INTO diet VALUES('" + dbdate + "','None',-1,-1,-1,-1,'None',-1,-1,-1,-1 ,'"+dbname + "'," + dbkcal + "," + dbcarb + "," + dbprotein + "," + dbfat + ");");
             }
 
@@ -228,7 +228,7 @@ public class MenuFragment extends Fragment {
             cursor.moveToFirst();
 
             if(checkEatTime==0){//조식
-                Toast.makeText(getContext(),"조식",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"조식",Toast.LENGTH_LONG).show();
                 String checkName = cursor.getString(cursor.getColumnIndex("bf"));
                 String sqlUpdate;
                 if(checkName.equals("None")){
@@ -246,7 +246,7 @@ public class MenuFragment extends Fragment {
                 sqlDB.execSQL(sqlUpdate);
             }
             else if(checkEatTime==1){//중식
-                Toast.makeText(getContext(),"중식",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"중식",Toast.LENGTH_LONG).show();
 
                 String checkName = cursor.getString(cursor.getColumnIndex("lun"));
                 String sqlUpdate;
@@ -265,7 +265,7 @@ public class MenuFragment extends Fragment {
                 sqlDB.execSQL(sqlUpdate);
             }
             else{//석식
-                Toast.makeText(getContext(),"석식",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"석식",Toast.LENGTH_LONG).show();
 
                 String checkName = cursor.getString(cursor.getColumnIndex("di"));
                 String sqlUpdate;

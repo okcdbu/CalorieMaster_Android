@@ -37,8 +37,6 @@ public class HomeFragment extends Fragment {
     LinearLayout layout_diet1,layout_diet2,layout_diet3;
     Button btn_left,btn_right;
 
-    Button btn1;
-    EditText tv1,tv2,tv3,tv4,tv5;
 
     Spinner spinner;
 
@@ -58,7 +56,6 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
-
         return fragment;
     }
 
@@ -96,12 +93,11 @@ public class HomeFragment extends Fragment {
         spinner=(Spinner)v.findViewById(R.id.spinner);
         myHelper=new myDBHelper(getContext());
 
-        btn1=(Button)v.findViewById(R.id.btn1);
-        tv1=(EditText)v.findViewById(R.id.tv1);
-        tv2=(EditText)v.findViewById(R.id.tv2);
-        tv3=(EditText)v.findViewById(R.id.tv3);
-        tv4=(EditText)v.findViewById(R.id.tv4);
-        tv5=(EditText)v.findViewById(R.id.tv5);
+
+        tv_date.setText(y+"년 " +(mon+1)+"월 " +d+"일");
+
+        String dbdate=""+y+(mon+1)+d;
+        select(dbdate);
         tv_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,44 +105,7 @@ public class HomeFragment extends Fragment {
                 datepicker.show();
             }
         });
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sqlDB=myHelper.getWritableDatabase();
 
-                Calendar day = Calendar.getInstance();
-                day.set(y,mon,d);
-
-                y=day.get(Calendar.YEAR);
-                mon=day.get(Calendar.MONTH);
-                d=day.get(Calendar.DAY_OF_MONTH);
-
-                String dbdate=""+y+(mon+1)+d;
-
-                boolean nothing=false;
-
-                Cursor cursor = sqlDB.rawQuery("SELECT * FROM diet WHERE date='"+dbdate+"';", null);
-
-                if (cursor.moveToFirst()) nothing = true;
-
-                if (!nothing) {
-
-                    String a;
-                    int b, c, d, e;
-                    a = tv1.getText().toString();
-                    b = Integer.parseInt(tv2.getText().toString());
-                    c = Integer.parseInt(tv3.getText().toString());
-                    d = Integer.parseInt(tv4.getText().toString());
-                    e = Integer.parseInt(tv4.getText().toString());
-
-                    sqlDB.execSQL("INSERT INTO diet VALUES('" + dbdate + "','" + a + "'," + b + "," + c + "," + d + "," + e + ",'밥밥디라라',0,0,0,0,'두비두밥',0,0,0,0);");
-
-                    select(dbdate);
-
-                }
-                sqlDB.close();
-            }
-        });
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
